@@ -2,64 +2,127 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>VitalPow | Portafolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitalPow | Portafolio Profesional</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; text-align: center; }
-        img { max-width: 100%; height: auto; border-radius: 8px; }
-        .nav { margin: 20px 0; padding: 10px; background: #f4f4f4; border-radius: 5px; }
-        .nav a { margin: 0 15px; text-decoration: none; color: #0077B5; font-weight: bold; }
-        .btn { display: inline-block; padding: 10px 20px; background: #00C4CC; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        hr { border: 0; border-top: 1px solid #eee; margin: 40px 0; }
-        .badge { display: inline-block; padding: 5px 10px; background: #8E75B2; color: white; border-radius: 4px; font-size: 12px; margin: 5px; }
+        :root {
+            --primary: #007788;
+            --accent: #00c4cc;
+            --bg: #f8fdfd;
+            --text: #2c3e50;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            scroll-behavior: smooth; 
+        }
+
+        /* BARRA DE NAVEGACIÓN ESTILO PRO */
+        header {
+            background: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { width: 45px; height: auto; }
+        .brand-text h1 { font-size: 1.2rem; margin: 0; color: var(--primary); }
+        .brand-text p { font-size: 0.8rem; margin: 0; color: #7f8c8d; }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #555; 
+            font-weight: 500; 
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-content {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        section { padding: 40px 0; border-bottom: 1px solid #eee; }
+        h2 { color: var(--primary); font-size: 2rem; margin-bottom: 25px; text-align: left; }
+
+        /* ESTILO DE LOS VIDEOS */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* IMAGEN DE BANNER */
+        .banner-container { margin: 20px 0; }
+        .banner-container img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        /* BOTONES */
+        .btn-download {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .btn-download:hover { background: var(--accent); transform: translateY(-2px); }
+
+        footer { text-align: center; padding: 40px; color: #bdc3c7; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <img src="Logo VitalPow.png" width="150" alt="Logo VitalPow">
-    <h1>VitalPow</h1>
-    <h3>🐾 Arnés Inteligente — Cuidado Canino</h3>
-
-    <div class="nav">
-        <a href="#resumen">Resumen</a>
-        <a href="#video">Video</a>
-        <a href="#imagen">Imagen</a>
-        <a href="#documento">Documento</a>
-    </div>
-
-    <section id="resumen">
-        <h2>📖 Resumen</h2>
-        <p>VitalPow es un arnés inteligente diseñado para el monitoreo en tiempo real de mascotas. Permite medir signos vitales y generar alertas para asegurar el bienestar canino.</p>
-    </section>
-
-    <hr>
-
-    <section id="video">
-        <h2>🎥 Presentación</h2>
-        <p>Simulación del funcionamiento del sistema:</p>
-        <a href="video_simulacion" class="btn">Ver Video de Simulación</a>
-    </section>
-
-    <hr>
-
-    <section id="imagen">
-        <h2>🖼️ Imagen del Proyecto</h2>
-        <p>Haz clic en la imagen para ver la presentación:</p>
-        <a href="https://prezi.com/view/0yMs5VQWj3CLnyORUQ6q/">
-            <img src="1.jpg" alt="Banner VitalPow" style="box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-        </a>
-    </section>
-
-    <hr>
-
-    <section id="documento">
-        <h2>📄 Documentación</h2>
-        <p>Consulta los detalles técnicos en el archivo oficial:</p>
-        <a href="Documento VitalP.pdf" class="btn" style="background: #D14836;">Descargar Documento PDF</a>
-    </section>
-
-    <footer>
-        <p>© 2026 VitalPow · Proyecto Universitario</p>
-    </footer>
-
-</body>
-</html>
+<header>
+    <nav>
+        <div class="brand">
+            <img src="Logo VitalPow.png" alt="Logo VitalPow">
+            <div class="brand-text">
+                <h1>VitalPow</h1>
+                <p>Arnés Inteligente — Cuidado Canino</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#resumen">Resumen</a>
+            <a href="#speech">Presentación</a>
+            <a href="#simulacion">Simulación</a>
+            <a href="#documento">Document
