@@ -3,167 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitalPow | Portafolio Profesional</title>
+    <title>VitalPow | Innovación Mascota</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #007788;
             --accent: #00c4cc;
-            --bg: #f8fdfd;
-            --text: #2c3e50;
-        }
-        
-        body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--bg); 
-            color: var(--text); 
-            scroll-behavior: smooth; 
+            --dark: #1a2a2a;
+            --glass: rgba(255, 255, 255, 0.8);
         }
 
-        /* BARRA DE NAVEGACIÓN ESTILO PRO */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #f0fafa, #e0f2f1, #ffffff, #f1f8e9);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* NAVBAR INTERACTIVA */
         header {
-            background: white;
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px 30px;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-        }
-        
-        nav {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand img { width: 45px; height: auto; }
-        .brand-text h1 { font-size: 1.2rem; margin: 0; color: var(--primary); }
-        .brand-text p { font-size: 0.8rem; margin: 0; color: #7f8c8d; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary); }
+        .logo img { width: 35px; transition: 0.5s; }
+        .logo:hover img { transform: rotate(360deg); }
 
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: #555; 
-            font-weight: 500; 
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: 0.3s;
-            font-size: 0.95rem;
-        }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* CONTENEDOR PRINCIPAL */
-        .main-content {
-            max-width: 900px;
-            margin: 100px auto 50px;
-            padding: 0 20px;
-        }
-
-        section { padding: 40px 0; border-bottom: 1px solid #eee; }
-        h2 { color: var(--primary); font-size: 2rem; margin-bottom: 25px; text-align: left; }
-
-        /* ESTILO DE LOS VIDEOS */
-        .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #000;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
-        /* IMAGEN DE BANNER */
-        .banner-container { margin: 20px 0; }
-        .banner-container img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -5px; left: 0;
+            background: var(--accent);
+            transition: 0.3s;
         }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        /* CONTENIDO */
+        .container { max-width: 1000px; margin: 150px auto 100px; padding: 0 20px; }
+
+        section { 
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border: 1px solid white;
+        }
+
+        section:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+        h2 { color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+
+        /* VIDEOS Y MEDIA */
+        .video-box {
+            position: relative; padding-bottom: 56.25%; height: 0;
+            border-radius: 15px; overflow: hidden; background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .banner-img {
+            width: 100%; border-radius: 15px; cursor: pointer;
+            transition: 0.5s ease;
+        }
+        .banner-img:hover { transform: scale(1.02); filter: brightness(1.1); }
 
         /* BOTONES */
-        .btn-download {
-            display: inline-block;
+        .btn-fancy {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
             background: var(--primary);
             color: white;
-            padding: 14px 28px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: 0.3s;
-            margin-top: 10px;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px rgba(0,119,136,0.2);
         }
-        .btn-download:hover { background: var(--accent); transform: translateY(-2px); }
 
-        footer { text-align: center; padding: 40px; color: #bdc3c7; font-size: 0.9rem; }
+        .btn-fancy:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,196,204,0.3);
+        }
+
+        footer { text-align: center; color: #888; font-size: 0.8rem; padding-bottom: 50px; }
+
     </style>
 </head>
 <body>
 
 <header>
     <nav>
-        <div class="brand">
-            <img src="Logo VitalPow.png" alt="Logo VitalPow">
-            <div class="brand-text">
-                <h1>VitalPow</h1>
-                <p>Arnés Inteligente — Cuidado Canino</p>
-            </div>
+        <div class="logo">
+            <img src="Logo VitalPow.png" alt="VP">
+            VitalPow
         </div>
         <div class="nav-links">
-            <a href="#resumen">Resumen</a>
-            <a href="#speech">Presentación</a>
-            <a href="#simulacion">Simulación</a>
-            <a href="#documento">Documento</a>
+            <a href="#resumen"><i class="fas fa-info-circle"></i> Info</a>
+            <a href="#speech"><i class="fas fa-microphone"></i> Speech</a>
+            <a href="#simulacion"><i class="fas fa-play-circle"></i> Demo</a>
+            <a href="#documento"><i class="fas fa-file-pdf"></i> PDF</a>
         </div>
     </nav>
 </header>
 
-<div class="main-content">
+<div class="container">
 
     <section id="resumen">
-        <h2>Resumen del Proyecto</h2>
-        <p style="font-size: 1.1rem; line-height: 1.6; color: #444;">
-            VitalPow es una solución innovadora diseñada para el monitoreo integral de mascotas. Mediante el uso de sensores avanzados, el arnés permite seguir en tiempo real constantes vitales como la frecuencia cardíaca y la temperatura, promoviendo un cuidado preventivo y responsable.
+        <h2><i class="fas fa-paw"></i> ¿Qué es VitalPow?</h2>
+        <p style="margin-bottom: 25px; line-height: 1.8;">
+            Revolucionando el cuidado canino mediante un <b>arnés inteligente</b> con sensores de alta precisión. Monitoreamos signos vitales para que siempre sepas cómo se siente tu mejor amigo.
         </p>
-        <div class="banner-container">
-            <img src="1.jpg" alt="Banner del proyecto">
-        </div>
+        <img src="1.jpg" class="banner-img" alt="Proyecto VitalPow">
     </section>
 
     <section id="speech">
-        <h2>Presentación del Proyecto</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/gVbZJhyuscg" title="VitalPow Speech" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2><i class="fas fa-presentation-screen"></i> Pitch del Proyecto</h2>
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/gVbZJhyuscg" allowfullscreen></iframe>
         </div>
     </section>
 
     <section id="simulacion">
-        <h2>Simulación de Funcionamiento</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/3vs4fe-M_Yo" title="VitalPow Simulación" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2><i class="fas fa-microchip"></i> Simulación Técnica</h2>
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/3vs4fe-M_Yo" allowfullscreen></iframe>
         </div>
     </section>
 
-    <section id="documento">
-        <h2>Documentación Técnica</h2>
-        <p>Consulta el documento detallado con toda la arquitectura, componentes y fases del desarrollo del proyecto VitalPow.</p>
-        <a href="Documento VitalP.pdf" class="btn-download" target="_blank">📄 Descargar Documento VitalP.pdf</a>
+    <section id="documento" style="text-align: center;">
+        <h2><i class="fas fa-folder-open"></i> Documentación</h2>
+        <p style="margin-bottom: 30px;">Accede a todo el detalle técnico y la memoria del proyecto.</p>
+        <a href="Documento VitalP.pdf" class="btn-fancy" target="_blank">
+            <i class="fas fa-download"></i> Descargar Documento Completo
+        </a>
     </section>
 
     <footer>
-        © 2026 VitalPow · Innovación para el Bienestar Canino
+        Hecho con ✨ por Sebastian Torres · Bogotá, 2026
     </footer>
 </div>
 
