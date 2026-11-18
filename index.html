@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VitalPow | Innovación Mascota</title>
+    <meta name="description" content="VitalPow: arnés inteligente para perros que monitorea temperatura, frecuencia cardíaca y movimiento con ESP32.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     
@@ -33,13 +34,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.5);
         }
 
-        /* FIX PARA EL LOGO GIGANTE */
         .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--primary); font-size: 1.4rem; }
-        .logo img { 
-            height: 40px; /* Tamaño controlado */
-            width: auto; 
-            object-fit: contain;
-        }
+        .logo img { height: 40px; width: auto; object-fit: contain; }
 
         nav a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--primary); }
@@ -80,8 +76,47 @@
             background: var(--primary); color: white; text-decoration: none;
             border-radius: 50px; font-weight: 700; transition: 0.3s;
         }
+        .btn-pro:hover { background: #00695c; transform: translateY(-2px); }
+
+        /* TABLA DE MATERIALES */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #e0eaea; }
+        th { background: var(--primary); color: #fff; font-weight: 600; }
+        tbody tr:hover { background: var(--light); }
+        tfoot td { font-weight: 700; color: var(--primary); border-top: 2px solid var(--primary); }
+        .nota { font-size: 0.85rem; color: #6b7b7b; margin-top: 12px; text-align: center; }
+
+        /* ARQUITECTURA */
+        .arch { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+        .arch-col { display: flex; flex-direction: column; gap: 12px; }
+        .arch-box {
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+            padding: 16px 20px; border-radius: 14px; background: var(--light);
+            border: 2px solid #d5e5e3; min-width: 130px; text-align: center;
+        }
+        .arch-box i { font-size: 1.5rem; color: var(--secondary); }
+        .arch-box span { font-weight: 600; font-size: 0.95rem; }
+        .arch-box small { font-size: 0.75rem; color: #6b7b7b; }
+        .arch-box.core { background: var(--primary); border-color: var(--primary); color: #fff; padding: 24px; }
+        .arch-box.core i { color: #fff; }
+        .arch-box.core small { color: rgba(255,255,255,0.8); }
+        .arch-arrow { font-size: 1.8rem; color: var(--primary); font-weight: 700; }
 
         footer { text-align: center; padding: 60px; background: var(--dark); color: white; margin-top: 50px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            header { padding: 10px 20px; border-radius: 20px; flex-direction: column; gap: 8px; }
+            nav a { margin: 0 8px; font-size: 0.9rem; }
+            .container { margin-top: 150px; }
+            h2 { font-size: 1.6rem; }
+            section { padding: 40px 15px; }
+            .gallery { grid-template-columns: 1fr; }
+            .names { flex-direction: column; gap: 10px; text-align: center; }
+            .arch { flex-direction: column; }
+            .arch-arrow { transform: rotate(90deg); }
+        }
     </style>
 </head>
 <body>
@@ -93,6 +128,8 @@
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#tecnologia">Tecnología</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#materiales">Materiales</a>
         <a href="#evidencia">Multimedia</a>
         <a href="#equipo">Equipo</a>
     </nav>
@@ -134,13 +171,58 @@
         </div>
     </section>
 
+    <section id="arquitectura">
+        <h2>Arquitectura del Sistema</h2>
+        <div class="arch">
+            <div class="arch-col">
+                <div class="arch-box sensor"><i class="fas fa-thermometer-half"></i><span>DS18B20</span><small>Temperatura</small></div>
+                <div class="arch-box sensor"><i class="fas fa-heartbeat"></i><span>MAX30102</span><small>Pulso / SpO₂</small></div>
+                <div class="arch-box sensor"><i class="fas fa-wave-square"></i><span>Razor 6DOF</span><small>Movimiento</small></div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-col">
+                <div class="arch-box core"><i class="fas fa-microchip"></i><span>ESP32</span><small>Procesamiento</small></div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-col">
+                <div class="arch-box out"><i class="fas fa-wifi"></i><span>WiFi</span><small>Envío de datos</small></div>
+                <div class="arch-box out"><i class="fas fa-bell"></i><span>Alerta</span><small>Dueño</small></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="materiales">
+        <h2>Materiales y Costos</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Componente</th><th>Cant.</th><th>Función</th><th>Precio unit.</th><th>Subtotal</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>ESP32 DevKit V1</td><td>1</td><td>Microcontrolador con WiFi</td><td>$35.000</td><td>$35.000</td></tr>
+                    <tr><td>DS18B20 (sonda impermeable)</td><td>1</td><td>Temperatura corporal</td><td>$12.000</td><td>$12.000</td></tr>
+                    <tr><td>MAX30102</td><td>1</td><td>Frecuencia cardíaca y SpO₂</td><td>$18.000</td><td>$18.000</td></tr>
+                    <tr><td>SparkFun Razor 6DOF</td><td>1</td><td>Acelerómetro y giroscopio</td><td>$95.000</td><td>$95.000</td></tr>
+                    <tr><td>Batería LiPo 3.7 V 1000 mAh</td><td>1</td><td>Alimentación portátil</td><td>$25.000</td><td>$25.000</td></tr>
+                    <tr><td>Módulo de carga TP4056</td><td>1</td><td>Carga y protección</td><td>$6.000</td><td>$6.000</td></tr>
+                    <tr><td>Arnés y tela técnica</td><td>1</td><td>Soporte físico</td><td>$40.000</td><td>$40.000</td></tr>
+                    <tr><td>Cables, resistencias, PCB</td><td>—</td><td>Conexionado</td><td>$15.000</td><td>$15.000</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><td colspan="4">Total estimado</td><td>$246.000</td></tr>
+                </tfoot>
+            </table>
+        </div>
+        <p class="nota">Precios aproximados en Colombia, 2026. Ajusta los valores a tus compras reales.</p>
+    </section>
+
     <section id="evidencia">
         <h2>Evidencia Multimedia</h2>
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/y60nRQ90qGc" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/y60nRQ90qGc" title="VitalPow - Video 1" allowfullscreen></iframe>
         </div>
         <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/-mAbU3CXRww" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/-mAbU3CXRww" title="VitalPow - Video 2" allowfullscreen></iframe>
         </div>
     </section>
 
