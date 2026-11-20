@@ -104,6 +104,11 @@
         .arch-arrow { font-size: 1.8rem; color: var(--primary); font-weight: 700; }
 
         footer { text-align: center; padding: 60px; background: var(--dark); color: white; margin-top: 50px; }
+        .sub { color: var(--dark); font-size: 1.3rem; margin: 40px 0 20px; text-align: center; }
+        figure { margin: 0; }
+        figure img { width: 100%; border-radius: 15px; display: block; }
+        figcaption { font-size: 0.85rem; color: #6b7b7b; text-align: center; margin-top: 8px; }
+
 
         /* RESPONSIVE */
         @media (max-width: 700px) {
@@ -165,11 +170,25 @@
                 <p>Procesamiento en tiempo real.</p>
             </div>
         </div>
+
+        <h3 class="sub">Avance del prototipo</h3>
+        <div class="gallery">
+            <figure>
+                <img src="avance1.jpg" alt="Montaje del ESP32 y sensores en el arnés">
+                <figcaption>Montaje del ESP32 con los sensores</figcaption>
+            </figure>
+            <figure>
+                <img src="avance2.jpg" alt="Arnés VitalPow con la pantalla LCD en funcionamiento">
+                <figcaption>Arnés con la pantalla LCD en funcionamiento</figcaption>
+            </figure>
+        </div>
+
         <div class="gallery">
             <img src="4.jpg" alt="Desarrollo 1">
             <img src="6.jpg" alt="Desarrollo 2">
         </div>
     </section>
+
 
     <section id="arquitectura">
         <h2>Arquitectura del Sistema</h2>
